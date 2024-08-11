@@ -5,17 +5,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisIndexedHttpSession;
 
-@SpringBootApplication(scanBasePackages = {"com.tinqinacademy.authentication"})
-@EntityScan(basePackages = {"com.tinqinacademy.authentication.persistence.models"})
-@EnableJpaRepositories(basePackages = {"com.tinqinacademy.authentication.persistence.repositories"})
-@EnableRedisRepositories(basePackages = {"com.tinqinacademy.authentication.persistence.crudrepositories"})
-@EnableFeignClients(basePackages = {"com.tinqinacademy.authentication"})
-public class AuthenticationApplication {
+@SpringBootApplication(scanBasePackages = {"com.tinqinacademy.redis"})
+@EntityScan(basePackages = {"com.tinqinacademy.redis.persistence.models"})
+//@EnableJpaRepositories(basePackages = {"com.tinqinacademy.authentication.persistence.repositories"})
+@EnableRedisIndexedHttpSession(maxInactiveIntervalInSeconds = 300)
+public class RedisApplication {
+
     public static void main(String[] args) {
-        Dotenv dotenv = Dotenv.configure().load();
-        System.setProperty("app.jwt-secret", dotenv.get("JWT_SECRET"));
 
-        SpringApplication.run(AuthenticationApplication.class, args);
+        SpringApplication.run(RedisApplication.class, args);
     }
 }
