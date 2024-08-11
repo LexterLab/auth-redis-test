@@ -9,7 +9,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 @SpringBootApplication(scanBasePackages = {"com.tinqinacademy.redis"})
 @EntityScan(basePackages = {"com.tinqinacademy.redis.persistence.models"})
-//@EnableJpaRepositories(basePackages = {"com.tinqinacademy.authentication.persistence.repositories"})
+@EnableJpaRepositories(basePackages = {"com.tinqinacademy.redis.persistence.repositories"})
 @EnableRedisIndexedHttpSession(maxInactiveIntervalInSeconds = 300)
 public class RedisApplication {
 

@@ -38,7 +38,7 @@ public class LoginProcessor extends BaseProcessor implements Login {
         return Try.of(() -> {
             authenticate(input);
             log.info("End login {}", input.getUsername());
-            return LoginOutput.builder().build();
+            return LoginOutput.builder().success(true).build();
 
         }).toEither()
                 .mapLeft(throwable -> Match(throwable).of(

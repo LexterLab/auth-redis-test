@@ -6,4 +6,5 @@ import lombok.Builder;
 
 @Builder
 public class LoginOutput implements OperationOutput {
+    private Boolean success;
 }
